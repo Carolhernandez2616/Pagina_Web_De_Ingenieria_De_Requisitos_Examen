@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciclo de Vida del Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<body>
+
+<!-- Hamburger -->
+<button id="menu-toggle" aria-label="Menú" onclick="toggleSidebar()">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <span>⚙ Ingeniería de Software</span>
+    <p>Ciclo de Vida &amp; Modelos</p>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-label">Fundamentos</span>
+    <a class="nav-item" href="#ciclo">Ciclo de Vida</a>
+    <a class="nav-item" href="#fases">¿Qué son las Fases?</a>
+  </div>
+  <div class="nav-group">
+    <span class="nav-label">Fases del Ciclo</span>
+    <a class="nav-item" href="#planificacion">Planificación</a>
+    <a class="nav-item" href="#analisis-fase">Análisis</a>
+    <a class="nav-item" href="#diseno">Diseño</a>
+    <a class="nav-item" href="#pruebas">Pruebas</a>
+    <a class="nav-item" href="#mantenimiento">Mantenimiento</a>
+  </div>
+  <div class="nav-group">
+    <span class="nav-label">Paradigmas</span>
+    <a class="nav-item" href="#paradigmas">¿Qué son?</a>
+    <a class="nav-item" href="#tradicional">Tradicional</a>
+    <a class="nav-item" href="#oop">Orientado a Objetos</a>
+    <a class="nav-item" href="#agil">Desarrollo Ágil</a>
+  </div>
+  <div class="nav-group">
+    <span class="nav-label">Modelos</span>
+    <a class="nav-item" href="#cascada">Cascada</a>
+    <a class="nav-item" href="#espiral">Espiral</a>
+    <a class="nav-item" href="#iterativo">Iterativo / Prototipos</a>
+    <a class="nav-item" href="#scrum">Scrum</a>
+    <a class="nav-item" href="#kanban">Kanban</a>
+    <a class="nav-item" href="#xp">XP / Prog. Extrema</a>
+  </div>
+  <div class="nav-group">
+    <span class="nav-label">Requisitos</span>
+    <a class="nav-item" href="#def-requisitos">Definición de Requisitos</a>
+    <a class="nav-item" href="#requisitos">Qué son los Requisitos</a>
+    <a class="nav-item" href="#ing-requisitos">Ingeniería de Requisitos</a>
+    <a class="nav-item" href="#etapas-ir">Etapas de la IR</a>
+    <a class="nav-item" href="#elicitacion">Elicitación</a>
+    <a class="nav-item" href="#objetivos-ir">Objetivos</a>
+    <a class="nav-item" href="#analisis-ir">Análisis</a>
+    <a class="nav-item" href="#especificacion">Especificación</a>
+    <a class="nav-item" href="#validacion">Validación</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Ingeniería de Sistemas · Conceptos Clave</p>
+      <h1 class="hero-title">Ciclo de Vida<br>del <em>Software</em></h1>
+      <p class="hero-desc">Un recorrido estructurado por las fases, paradigmas, modelos de desarrollo y la ingeniería de requisitos que rigen la construcción del software moderno.</p>
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Modelos</span></div>
+        <div class="stat-item"><span class="stat-num">5</span><span class="stat-lbl">Fases</span></div>
+        <div class="stat-item"><span class="stat-num">3</span><span class="stat-lbl">Paradigmas</span></div>
+        <div class="stat-item"><span class="stat-num">5</span><span class="stat-lbl">Etapas IR</span></div>
+      </div>
+    </div>
+    <div class="orbit-wrap">
+      <!-- Animated SVG orbit diagram -->
+      <svg class="orbit-svg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="cg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#06B6D4" stop-opacity=".3"/>
+            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Glow -->
+        <circle cx="130" cy="130" r="70" fill="url(#cg)"/>
+        <!-- Outer ring -->
+        <g class="orbit-ring-2">
+          <circle cx="130" cy="130" r="110" fill="none" stroke="#263247" stroke-width="1" stroke-dasharray="4 6"/>
+          <!-- Outer nodes -->
+          <circle cx="130" cy="20"  r="6" fill="#7C3AED"/>
+          <circle cx="230" cy="170" r="6" fill="#7C3AED"/>
+          <circle cx="50"  cy="210" r="6" fill="#7C3AED"/>
+        </g>
+        <!-- Inner ring -->
+        <g class="orbit-ring-1">
+          <circle cx="130" cy="130" r="70" fill="none" stroke="#1E3A5F" stroke-width="1.5" stroke-dasharray="3 5"/>
+          <!-- Phase dots -->
+          <circle cx="130" cy="62"  r="8" fill="#06B6D4" opacity=".9"/>
+          <circle cx="189" cy="100" r="8" fill="#06B6D4" opacity=".9"/>
+          <circle cx="189" cy="160" r="8" fill="#F59E0B" opacity=".9"/>
+          <circle cx="130" cy="198" r="8" fill="#F59E0B" opacity=".9"/>
+          <circle cx="71"  cy="160" r="8" fill="#10B981" opacity=".9"/>
+          <circle cx="71"  cy="100" r="8" fill="#10B981" opacity=".9"/>
+        </g>
+        <!-- Center -->
+        <g class="orbit-center">
+          <circle cx="130" cy="130" r="30" fill="#0B1120" stroke="#06B6D4" stroke-width="2"/>
+          <text x="130" y="126" text-anchor="middle" font-family="Space Grotesk" font-size="9" fill="#06B6D4" font-weight="700">CICLO</text>
+          <text x="130" y="138" text-anchor="middle" font-family="Space Grotesk" font-size="9" fill="#94A3B8">DE VIDA</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div id="content">
+
+    <!-- ═══ CICLO DE VIDA ═══ -->
+    <section class="section" id="ciclo">
+      <p class="section-eyebrow accent-cyan">Fundamento Principal</p>
+      <h2 class="section-title">¿Qué es el Ciclo de Vida del Software?</h2>
+      <div class="section-body">
+        <p>El <strong>Ciclo de Vida del Software (SDLC – Software Development Life Cycle)</strong> es el conjunto de etapas o fases estructuradas y ordenadas que se siguen para planificar, crear, probar, desplegar y mantener un sistema de software. Define el proceso completo que va desde la concepción de la idea hasta el retiro del sistema.</p>
+        <p>Su propósito es proporcionar un marco de trabajo que mejore la calidad del software, controle los costos, gestione los riesgos y garantice que el producto final cumpla los requisitos del cliente dentro de los plazos establecidos.</p>
+      </div>
+      <div class="highlight">
+        <strong>En esencia:</strong> es el "mapa de ruta" que sigue un equipo de desarrollo para convertir una necesidad de negocio en un producto de software funcional, confiable y mantenible.
+      </div>
+      <div class="tags">
+        <span class="tag tag-cyan">Planificación</span>
+        <span class="tag tag-cyan">Análisis</span>
+        <span class="tag tag-cyan">Diseño</span>
+        <span class="tag tag-cyan">Implementación</span>
+        <span class="tag tag-cyan">Pruebas</span>
+        <span class="tag tag-cyan">Mantenimiento</span>
+      </div>
+    </section>
+
+    <!-- ═══ FASES ═══ -->
+    <section class="section" id="fases">
+      <p class="section-eyebrow accent-violet">Estructura</p>
+      <h2 class="section-title">¿Qué son las Fases?</h2>
+      <div class="section-body">
+        <p>Las <strong>fases</strong> son las etapas bien definidas y diferenciadas en las que se divide el ciclo de vida del software. Cada fase tiene entradas específicas, actividades concretas, entregables esperados y criterios de salida que permiten pasar a la siguiente etapa.</p>
+        <p>La división en fases permite gestionar la complejidad del desarrollo, distribuir el trabajo en equipos, controlar el progreso del proyecto y reducir los riesgos mediante puntos de control claros.</p>
+      </div>
+    </section>
+
+    <!-- ═══ FASES DETALLE ═══ -->
+    <section class="section" id="planificacion">
+      <p class="section-eyebrow accent-cyan">Fase 1</p>
+      <h2 class="section-title">Fase de Planificación</h2>
+      <div class="section-body">
+        <p>La <strong>planificación</strong> es la fase inicial donde se define el alcance del proyecto, se identifican los recursos necesarios (humanos, tecnológicos, financieros), se elabora el cronograma y se realiza el estudio de viabilidad técnica y económica.</p>
+      </div>
+      <ul class="feat-list">
+        <li>Definición del alcance y objetivos del proyecto</li>
+        <li>Estudio de factibilidad técnica, económica y operativa</li>
+        <li>Estimación de costos, tiempos y recursos</li>
+        <li>Identificación y análisis de riesgos iniciales</li>
+        <li>Elaboración del plan de proyecto y cronograma</li>
+      </ul>
+    </section>
+
+    <section class="section" id="analisis-fase">
+      <p class="section-eyebrow accent-violet">Fase 2</p>
+      <h2 class="section-title">Fase de Análisis</h2>
+      <div class="section-body">
+        <p>En la fase de <strong>análisis</strong> se estudian y documentan en detalle las necesidades del cliente. Se determinan los requisitos funcionales y no funcionales del sistema, se comprenden los procesos de negocio actuales y se define qué debe hacer el software sin entrar en cómo hacerlo.</p>
+      </div>
+      <ul class="feat-list v">
+        <li>Levantamiento de información con stakeholders</li>
+        <li>Documentación de requisitos funcionales y no funcionales</li>
+        <li>Modelado del dominio del problema</li>
+        <li>Análisis de procesos de negocio actuales</li>
+        <li>Validación de requisitos con el cliente</li>
+      </ul>
+    </section>
+
+    <section class="section" id="diseno">
+      <p class="section-eyebrow accent-amber">Fase 3</p>
+      <h2 class="section-title">Fase de Diseño</h2>
+      <div class="section-body">
+        <p>La fase de <strong>diseño</strong> traduce los requisitos en una arquitectura y especificaciones técnicas concretas. Se define la estructura del sistema: arquitectura de software, diseño de base de datos, interfaces de usuario, componentes e integraciones.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-amber">
+          <span class="card-icon">🏗</span>
+          <div class="card-title">Diseño Arquitectónico</div>
+          <div class="card-body">Estructura de alto nivel del sistema: capas, módulos, patrones de arquitectura (MVC, microservicios, etc.).</div>
+        </div>
+        <div class="card c-amber">
+          <span class="card-icon">🗄</span>
+          <div class="card-title">Diseño de Datos</div>
+          <div class="card-body">Modelado de la base de datos: entidades, relaciones, normalización, esquemas.</div>
+        </div>
+        <div class="card c-amber">
+          <span class="card-icon">🖥</span>
+          <div class="card-title">Diseño de Interfaces</div>
+          <div class="card-body">Wireframes, prototipos de UI/UX y definición de la experiencia de usuario.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pruebas">
+      <p class="section-eyebrow accent-emerald">Fase 4</p>
+      <h2 class="section-title">Fase de Pruebas</h2>
+      <div class="section-body">
+        <p>La fase de <strong>pruebas (testing)</strong> verifica que el software desarrollado cumple los requisitos especificados y funciona correctamente. Se identifican y corrigen defectos antes de la entrega al cliente.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-emerald">
+          <span class="card-icon">🔬</span>
+          <div class="card-title">Pruebas Unitarias</div>
+          <div class="card-body">Verificación de componentes individuales de forma aislada.</div>
+        </div>
+        <div class="card c-emerald">
+          <span class="card-icon">🔗</span>
+          <div class="card-title">Pruebas de Integración</div>
+          <div class="card-body">Verificación de la interacción entre módulos del sistema.</div>
+        </div>
+        <div class="card c-emerald">
+          <span class="card-icon">✅</span>
+          <div class="card-title">Pruebas de Aceptación</div>
+          <div class="card-body">Validación con el cliente de que el sistema cumple sus expectativas.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mantenimiento">
+      <p class="section-eyebrow accent-rose">Fase 5</p>
+      <h2 class="section-title">Fase de Mantenimiento</h2>
+      <div class="section-body">
+        <p>El <strong>mantenimiento</strong> es la fase que ocurre después del despliegue del sistema. Comprende todas las actividades para corregir errores encontrados en producción, adaptar el software a nuevos entornos, mejorar el rendimiento y añadir nuevas funcionalidades.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-rose">
+          <span class="card-icon">🔧</span>
+          <div class="card-title">Correctivo</div>
+          <div class="card-body">Corrección de errores y fallos detectados en producción.</div>
+        </div>
+        <div class="card c-rose">
+          <span class="card-icon">🔄</span>
+          <div class="card-title">Adaptativo</div>
+          <div class="card-body">Adaptación a cambios en el entorno: SO, hardware, normativas.</div>
+        </div>
+        <div class="card c-rose">
+          <span class="card-icon">🚀</span>
+          <div class="card-title">Perfectivo</div>
+          <div class="card-body">Mejoras de rendimiento y adición de nuevas funcionalidades.</div>
+        </div>
+        <div class="card c-rose">
+          <span class="card-icon">🛡</span>
+          <div class="card-title">Preventivo</div>
+          <div class="card-body">Acciones para evitar futuros problemas y reducir la deuda técnica.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PARADIGMAS ═══ -->
+    <section class="section" id="paradigmas">
+      <p class="section-eyebrow accent-violet">Modelos Mentales</p>
+      <h2 class="section-title">¿Qué son los Paradigmas de Modelos?</h2>
+      <div class="section-body">
+        <p>Un <strong>paradigma de desarrollo</strong> es un marco conceptual y filosófico que establece los principios, valores y enfoques fundamentales que guían la forma en que se construye el software. Define cómo se piensan y organizan los proyectos de desarrollo.</p>
+        <p>Los paradigmas agrupan modelos y metodologías que comparten una visión similar sobre cómo abordar la complejidad del software.</p>
+      </div>
+    </section>
+
+    <section class="section" id="tradicional">
+      <p class="section-eyebrow accent-cyan">Paradigma 1</p>
+      <h2 class="section-title">Paradigma Tradicional</h2>
+      <div class="section-body">
+        <p>El <strong>paradigma tradicional</strong> (también llamado clásico o predictivo) aboga por una planificación exhaustiva y secuencial antes de iniciar el desarrollo. Se fundamenta en la idea de que los requisitos pueden conocerse completamente al inicio y que el proceso debe seguir un orden rígido y documentado.</p>
+      </div>
+      <div class="highlight">
+        <strong>Características clave:</strong> documentación extensa, fases bien delimitadas, cambios difíciles de incorporar una vez iniciado el proyecto, adecuado para proyectos con requisitos estables y bien definidos.
+      </div>
+      <div class="tags">
+        <span class="tag tag-cyan">Cascada</span>
+        <span class="tag tag-cyan">Espiral</span>
+        <span class="tag tag-cyan">V-Model</span>
+      </div>
+    </section>
+
+    <section class="section" id="oop">
+      <p class="section-eyebrow accent-violet">Paradigma 2</p>
+      <h2 class="section-title">Paradigma Orientado a Objetos</h2>
+      <div class="section-body">
+        <p>El <strong>paradigma orientado a objetos (POO)</strong> modela el software como un conjunto de objetos que interactúan entre sí. Cada objeto encapsula datos (atributos) y comportamientos (métodos). Favorece la reutilización del código, el mantenimiento y la escalabilidad del sistema.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-violet">
+          <span class="card-icon">📦</span>
+          <div class="card-title">Encapsulamiento</div>
+          <div class="card-body">Los datos y métodos se agrupan en objetos, ocultando la implementación interna.</div>
+        </div>
+        <div class="card c-violet">
+          <span class="card-icon">🧬</span>
+          <div class="card-title">Herencia</div>
+          <div class="card-body">Una clase puede heredar atributos y métodos de otra clase padre.</div>
+        </div>
+        <div class="card c-violet">
+          <span class="card-icon">🔀</span>
+          <div class="card-title">Polimorfismo</div>
+          <div class="card-body">Un mismo mensaje puede producir comportamientos distintos según el objeto receptor.</div>
+        </div>
+        <div class="card c-violet">
+          <span class="card-icon">🎭</span>
+          <div class="card-title">Abstracción</div>
+          <div class="card-body">Se modelan solo los aspectos relevantes del mundo real para el sistema.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="agil">
+      <p class="section-eyebrow accent-emerald">Paradigma 3</p>
+      <h2 class="section-title">Paradigma de Desarrollo Ágil</h2>
+      <div class="section-body">
+        <p>El <strong>paradigma ágil</strong> se basa en la entrega iterativa e incremental de software funcional, la colaboración continua con el cliente y la capacidad de responder rápidamente a los cambios. Está fundamentado en el <em>Manifiesto Ágil</em> (2001) y sus 12 principios.</p>
+      </div>
+      <div class="highlight e">
+        <strong>Manifiesto Ágil prioriza:</strong> Individuos e interacciones sobre procesos y herramientas · Software funcionando sobre documentación exhaustiva · Colaboración con el cliente sobre negociación de contratos · Respuesta al cambio sobre seguir un plan.
+      </div>
+      <div class="tags">
+        <span class="tag tag-emerald">Scrum</span>
+        <span class="tag tag-emerald">Kanban</span>
+        <span class="tag tag-emerald">XP</span>
+        <span class="tag tag-emerald">SAFe</span>
+      </div>
+    </section>
+
+    <!-- ═══ MODELOS ═══ -->
+    <section class="section" id="cascada">
+      <p class="section-eyebrow accent-cyan">Modelo 1</p>
+      <h2 class="section-title">Modelo en Cascada</h2>
+      <div class="section-body">
+        <p>El <strong>modelo en cascada</strong> (Waterfall) es el modelo más clásico del desarrollo de software. Las fases se ejecutan de forma secuencial y cada una debe completarse antes de que pueda comenzar la siguiente, como el agua que cae por una cascada sin retroceder.</p>
+        <p>Es adecuado para proyectos con requisitos muy estables, bien documentados y poco susceptibles de cambio durante el desarrollo.</p>
+      </div>
+      <div class="timeline">
+        <div class="t-item"><div class="t-dot cyan">1</div><div class="t-content"><div class="t-title">Requisitos</div><div class="t-desc">Documentación completa de lo que debe hacer el sistema.</div></div></div>
+        <div class="t-item"><div class="t-dot cyan">2</div><div class="t-content"><div class="t-title">Diseño</div><div class="t-desc">Arquitectura y diseño técnico detallado.</div></div></div>
+        <div class="t-item"><div class="t-dot cyan">3</div><div class="t-content"><div class="t-title">Implementación</div><div class="t-desc">Codificación del sistema según el diseño.</div></div></div>
+        <div class="t-item"><div class="t-dot cyan">4</div><div class="t-content"><div class="t-title">Verificación</div><div class="t-desc">Pruebas y corrección de defectos.</div></div></div>
+        <div class="t-item"><div class="t-dot cyan">5</div><div class="t-content"><div class="t-title">Mantenimiento</div><div class="t-desc">Soporte y actualizaciones post-entrega.</div></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="espiral">
+      <p class="section-eyebrow accent-violet">Modelo 2</p>
+      <h2 class="section-title">Modelo Espiral</h2>
+      <div class="section-body">
+        <p>El <strong>modelo espiral</strong> (propuesto por Barry Boehm, 1986) combina el enfoque iterativo con la gestión sistemática de riesgos. El proyecto avanza en ciclos (espirales), y en cada vuelta se planifica, se analiza el riesgo, se desarrolla un prototipo y se evalúa con el cliente.</p>
+        <p>Es especialmente adecuado para proyectos grandes y complejos donde los riesgos deben identificarse y mitigarse en cada iteración.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-violet"><span class="card-icon">📋</span><div class="card-title">Planificación</div><div class="card-body">Determinación de objetivos, alternativas y restricciones de cada ciclo.</div></div>
+        <div class="card c-violet"><span class="card-icon">⚠️</span><div class="card-title">Análisis de Riesgos</div><div class="card-body">Identificación y mitigación de riesgos antes de cada desarrollo.</div></div>
+        <div class="card c-violet"><span class="card-icon">🛠</span><div class="card-title">Ingeniería</div><div class="card-body">Desarrollo y pruebas del producto de la iteración actual.</div></div>
+        <div class="card c-violet"><span class="card-icon">🔍</span><div class="card-title">Evaluación</div><div class="card-body">Revisión con el cliente y decisión de continuar o ajustar.</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="iterativo">
+      <p class="section-eyebrow accent-amber">Modelo 3</p>
+      <h2 class="section-title">Modelo Iterativo o por Prototipos</h2>
+      <div class="section-body">
+        <p>El <strong>modelo iterativo</strong> desarrolla el sistema en ciclos repetitivos (iteraciones), cada uno produciendo una versión mejorada del producto. El <strong>modelo por prototipos</strong> construye versiones preliminares del sistema para que el cliente valide los requisitos antes del desarrollo completo.</p>
+        <p>Ambos enfoques reducen el riesgo de construir algo que no satisfaga las necesidades reales del usuario.</p>
+      </div>
+      <div class="highlight a">
+        <strong>Ventaja clave:</strong> permite obtener retroalimentación temprana del usuario, detectar malentendidos en los requisitos y corregir el rumbo antes de invertir en el desarrollo completo.
+      </div>
+    </section>
+
+    <section class="section" id="scrum">
+      <p class="section-eyebrow accent-emerald">Modelo 4</p>
+      <h2 class="section-title">Modelo Scrum</h2>
+      <div class="section-body">
+        <p><strong>Scrum</strong> es un framework ágil para gestionar proyectos de software en iteraciones fijas llamadas <em>Sprints</em> (normalmente 1-4 semanas). Al final de cada Sprint se entrega un incremento funcional del producto.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-emerald"><span class="card-icon">👤</span><div class="card-title">Product Owner</div><div class="card-body">Representa al cliente, prioriza el Product Backlog y define el valor del producto.</div></div>
+        <div class="card c-emerald"><span class="card-icon">🏃</span><div class="card-title">Scrum Master</div><div class="card-body">Facilita el proceso, elimina impedimentos y protege al equipo.</div></div>
+        <div class="card c-emerald"><span class="card-icon">👥</span><div class="card-title">Dev Team</div><div class="card-body">Equipo auto-organizado que desarrolla el incremento en cada Sprint.</div></div>
+        <div class="card c-emerald"><span class="card-icon">📋</span><div class="card-title">Sprint Backlog</div><div class="card-body">Conjunto de tareas seleccionadas para completar durante el Sprint.</div></div>
+        <div class="card c-emerald"><span class="card-icon">🔄</span><div class="card-title">Daily Scrum</div><div class="card-body">Reunión diaria de 15 min: ¿Qué hice? ¿Qué haré? ¿Qué me bloquea?</div></div>
+        <div class="card c-emerald"><span class="card-icon">📦</span><div class="card-title">Incremento</div><div class="card-body">Producto funcional y potencialmente entregable al final del Sprint.</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="kanban">
+      <p class="section-eyebrow accent-rose">Modelo 5</p>
+      <h2 class="section-title">Modelo Kanban</h2>
+      <div class="section-body">
+        <p><strong>Kanban</strong> es un método visual de gestión del flujo de trabajo originado en Toyota. En desarrollo de software, utiliza un tablero con columnas que representan estados del trabajo (Por hacer, En progreso, Hecho) para visualizar el flujo y limitar el trabajo en curso (WIP).</p>
+      </div>
+      <ul class="feat-list r">
+        <li>Visualización del flujo de trabajo mediante tablero</li>
+        <li>Limitación del trabajo en progreso (WIP limits)</li>
+        <li>Gestión y mejora continua del flujo</li>
+        <li>Políticas explícitas y criterios de aceptación claros</li>
+        <li>Ciclos de retroalimentación y mejora continua (Kaizen)</li>
+      </ul>
+      <div class="highlight">
+        <strong>Diferencia con Scrum:</strong> Kanban no usa iteraciones fijas ni roles definidos. Es más flexible y continuo, ideal para equipos de mantenimiento o soporte con trabajo impredecible.
+      </div>
+    </section>
+
+    <section class="section" id="xp">
+      <p class="section-eyebrow accent-amber">Modelo 6</p>
+      <h2 class="section-title">Modelo XP — Programación Extrema</h2>
+      <div class="section-body">
+        <p><strong>eXtreme Programming (XP)</strong>, creado por Kent Beck, es una metodología ágil centrada en la excelencia técnica y la satisfacción del cliente. Lleva al extremo las buenas prácticas de programación para maximizar la calidad y adaptabilidad.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-amber"><span class="card-icon">👯</span><div class="card-title">Programación en Parejas</div><div class="card-body">Dos desarrolladores trabajan en una sola estación: uno escribe, el otro revisa.</div></div>
+        <div class="card c-amber"><span class="card-icon">🔁</span><div class="card-title">TDD</div><div class="card-body">Test-Driven Development: primero se escriben las pruebas, luego el código que las pase.</div></div>
+        <div class="card c-amber"><span class="card-icon">♻️</span><div class="card-title">Refactoring</div><div class="card-body">Mejora continua del código sin cambiar su comportamiento externo.</div></div>
+        <div class="card c-amber"><span class="card-icon">🔗</span><div class="card-title">Integración Continua</div><div class="card-body">El código se integra y prueba varias veces al día para detectar errores temprano.</div></div>
+        <div class="card c-amber"><span class="card-icon">🏃</span><div class="card-title">Entregas Pequeñas</div><div class="card-body">Versiones funcionales del software entregadas en ciclos muy cortos.</div></div>
+        <div class="card c-amber"><span class="card-icon">🤝</span><div class="card-title">Cliente en el Sitio</div><div class="card-body">El cliente está disponible permanentemente para resolver dudas y priorizar.</div></div>
+        <div class="card c-amber"><span class="card-icon">📐</span><div class="card-title">Diseño Simple</div><div class="card-body">Solo se implementa lo necesario: principio YAGNI (You Aren't Gonna Need It).</div></div>
+        <div class="card c-amber"><span class="card-icon">🗂</span><div class="card-title">Historias de Usuario</div><div class="card-body">Requisitos escritos desde la perspectiva del usuario final.</div></div>
+      </div>
+    </section>
+
+    <!-- ═══ REQUISITOS ═══ -->
+    <section class="section" id="def-requisitos">
+      <p class="section-eyebrow accent-cyan">Ingeniería de Requisitos</p>
+      <h2 class="section-title">Fase de Definición de Requisitos</h2>
+      <div class="section-body">
+        <p>La <strong>fase de definición de requisitos</strong> es la etapa del ciclo de vida donde se identifican, documentan y acuerdan todas las características y restricciones que el sistema de software debe satisfacer. Es el puente entre las necesidades del cliente y la solución técnica.</p>
+        <p>Esta fase es crítica: los errores en los requisitos son los más costosos de corregir, ya que se propagan a todas las fases siguientes.</p>
+      </div>
+      <div class="highlight">
+        <strong>Dato clave:</strong> estudios del sector indican que el 60-70% de los defectos en proyectos de software tienen su origen en errores o ambigüedades en los requisitos.
+      </div>
+    </section>
+
+    <section class="section" id="requisitos">
+      <p class="section-eyebrow accent-violet">Concepto Central</p>
+      <h2 class="section-title">¿Qué son los Requisitos?</h2>
+      <div class="section-body">
+        <p>Un <strong>requisito</strong> es una condición o capacidad que debe poseer un sistema para satisfacer un contrato, estándar, especificación u otro documento formalmente impuesto. Es una declaración de lo que el sistema debe hacer o de cómo debe comportarse.</p>
+      </div>
+      <table class="req-table">
+        <thead>
+          <tr><th>Tipo</th><th>Descripción</th><th>Ejemplos</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Funcionales</td><td>Describen qué funciones debe realizar el sistema</td><td>Login, registro, búsqueda, generación de reportes</td></tr>
+          <tr><td>No Funcionales</td><td>Restricciones de calidad y comportamiento del sistema</td><td>Rendimiento, seguridad, disponibilidad, usabilidad</td></tr>
+          <tr><td>De Dominio</td><td>Derivados del área de negocio del sistema</td><td>Normas contables, regulaciones médicas, GDPR</td></tr>
+          <tr><td>De Usuario</td><td>Lo que el usuario espera poder hacer con el sistema</td><td>Historias de usuario, casos de uso</td></tr>
+          <tr><td>Del Sistema</td><td>Especificaciones técnicas detalladas del comportamiento</td><td>Especificaciones de la API, protocolos de datos</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 24px;">
+        <p style="font-family: var(--font-head); font-size:14px; font-weight:600; margin-bottom:12px;">Características de un buen requisito:</p>
+        <div class="tags">
+          <span class="tag tag-violet">Completo</span>
+          <span class="tag tag-violet">Consistente</span>
+          <span class="tag tag-violet">Verificable</span>
+          <span class="tag tag-violet">No ambiguo</span>
+          <span class="tag tag-violet">Trazable</span>
+          <span class="tag tag-violet">Modificable</span>
+          <span class="tag tag-violet">Priorizable</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ing-requisitos">
+      <p class="section-eyebrow accent-emerald">Disciplina</p>
+      <h2 class="section-title">Ingeniería de Requisitos</h2>
+      <div class="section-body">
+        <p>La <strong>Ingeniería de Requisitos (IR)</strong> es la disciplina de la ingeniería de software que abarca todos los procesos relacionados con la determinación de los objetivos, funciones y restricciones de los sistemas de software y hardware, así como las relaciones entre estos factores, con el objetivo de establecer una especificación precisa de los requisitos del sistema.</p>
+        <p>No es simplemente "escribir lo que el cliente quiere", sino un proceso sistemático y riguroso de descubrimiento, análisis, documentación y gestión de las necesidades.</p>
+      </div>
+      <div class="highlight e">
+        <strong>Objetivo principal:</strong> garantizar que el software que se desarrolla sea el correcto, construido de la manera correcta, para satisfacer las necesidades reales de los usuarios y stakeholders.
+      </div>
+    </section>
+
+    <section class="section" id="etapas-ir">
+      <p class="section-eyebrow accent-cyan">Proceso</p>
+      <h2 class="section-title">Etapas de la Ingeniería de Requisitos</h2>
+      <div class="section-body">
+        <p>La IR se desarrolla a través de cinco etapas fundamentales que garantizan una comprensión completa y precisa de las necesidades del sistema:</p>
+      </div>
+      <div class="timeline" style="margin-top: 28px;">
+        <div class="t-item"><div class="t-dot cyan">E</div><div class="t-content"><div class="t-title">Elicitación</div><div class="t-desc">Descubrimiento y recopilación de requisitos desde las fuentes de información.</div></div></div>
+        <div class="t-item"><div class="t-dot violet">O</div><div class="t-content"><div class="t-title">Objetivos / Estudio de Viabilidad</div><div class="t-desc">Definición del alcance y verificación de viabilidad del sistema propuesto.</div></div></div>
+        <div class="t-item"><div class="t-dot amber">A</div><div class="t-content"><div class="t-title">Análisis</div><div class="t-desc">Refinamiento, clasificación y detección de conflictos entre requisitos.</div></div></div>
+        <div class="t-item"><div class="t-dot emerald">E</div><div class="t-content"><div class="t-title">Especificación</div><div class="t-desc">Documentación formal y estructurada de todos los requisitos del sistema.</div></div></div>
+        <div class="t-item"><div class="t-dot rose">V</div><div class="t-content"><div class="t-title">Validación</div><div class="t-desc">Verificación con los stakeholders de que los requisitos son correctos y completos.</div></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="elicitacion">
+      <p class="section-eyebrow accent-cyan">Etapa 1 — IR</p>
+      <h2 class="section-title">Elicitación</h2>
+      <div class="section-body">
+        <p>La <strong>elicitación</strong> (también llamada captura o levantamiento de requisitos) es el proceso de descubrir, extraer y recopilar información sobre las necesidades del sistema desde todas las fuentes relevantes: usuarios, clientes, documentos, sistemas existentes y partes interesadas.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-cyan"><span class="card-icon">🎤</span><div class="card-title">Entrevistas</div><div class="card-body">Conversaciones estructuradas o no estructuradas con stakeholders clave.</div></div>
+        <div class="card c-cyan"><span class="card-icon">📋</span><div class="card-title">Cuestionarios</div><div class="card-body">Encuestas para recopilar información de múltiples usuarios simultáneamente.</div></div>
+        <div class="card c-cyan"><span class="card-icon">👁</span><div class="card-title">Observación</div><div class="card-body">Análisis del entorno de trabajo actual del usuario (etnografía).</div></div>
+        <div class="card c-cyan"><span class="card-icon">🧠</span><div class="card-title">Talleres (JAD)</div><div class="card-body">Sesiones facilitadas con múltiples stakeholders para consensuar requisitos.</div></div>
+        <div class="card c-cyan"><span class="card-icon">🖼</span><div class="card-title">Prototipos</div><div class="card-body">Modelos preliminares para clarificar y validar requisitos visualmente.</div></div>
+        <div class="card c-cyan"><span class="card-icon">📚</span><div class="card-title">Análisis de Documentos</div><div class="card-body">Revisión de sistemas existentes, manuales y normativas del negocio.</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="objetivos-ir">
+      <p class="section-eyebrow accent-violet">Etapa 2 — IR</p>
+      <h2 class="section-title">Objetivos en la IR</h2>
+      <div class="section-body">
+        <p>En el contexto de la ingeniería de requisitos, los <strong>objetivos</strong> son las metas de alto nivel que el sistema debe alcanzar y las razones por las que se construye. Definen el propósito del sistema desde la perspectiva del negocio y del usuario, antes de entrar en detalles funcionales específicos.</p>
+        <p>Los objetivos permiten priorizar los requisitos, resolver conflictos entre ellos y garantizar que el desarrollo esté siempre orientado a generar valor real para el cliente.</p>
+      </div>
+      <ul class="feat-list v">
+        <li>Definir el problema de negocio que el sistema debe resolver</li>
+        <li>Establecer criterios de éxito medibles para el proyecto</li>
+        <li>Identificar restricciones de alto nivel (presupuesto, tiempo, tecnología)</li>
+        <li>Alinear expectativas entre todos los stakeholders</li>
+        <li>Proporcionar base para la priorización de requisitos</li>
+      </ul>
+    </section>
+
+    <section class="section" id="analisis-ir">
+      <p class="section-eyebrow accent-amber">Etapa 3 — IR</p>
+      <h2 class="section-title">Análisis de Requisitos</h2>
+      <div class="section-body">
+        <p>El <strong>análisis de requisitos</strong> toma los requisitos en bruto obtenidos durante la elicitación y los procesa para detectar ambigüedades, incompletitudes, inconsistencias y conflictos. Clasifica, refina y estructura los requisitos para prepararlos para su especificación formal.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-amber"><span class="card-icon">🔎</span><div class="card-title">Detección de Conflictos</div><div class="card-body">Identificación de requisitos contradictorios entre diferentes stakeholders.</div></div>
+        <div class="card c-amber"><span class="card-icon">📊</span><div class="card-title">Clasificación</div><div class="card-body">Agrupación por tipo: funcional, no funcional, de negocio, de usuario.</div></div>
+        <div class="card c-amber"><span class="card-icon">⚖️</span><div class="card-title">Priorización</div><div class="card-body">Ordenación por importancia y urgencia para el negocio.</div></div>
+        <div class="card c-amber"><span class="card-icon">🔗</span><div class="card-title">Modelado</div><div class="card-body">Representación visual mediante casos de uso, diagramas de flujo, etc.</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="especificacion">
+      <p class="section-eyebrow accent-emerald">Etapa 4 — IR</p>
+      <h2 class="section-title">Especificación de Requisitos</h2>
+      <div class="section-body">
+        <p>La <strong>especificación</strong> es el proceso de documentar los requisitos de forma precisa, completa y no ambigua. El documento resultante se conoce como <em>Especificación de Requisitos del Software (SRS)</em> o <em>ERS</em>, y constituye el contrato técnico entre el equipo de desarrollo y el cliente.</p>
+      </div>
+      <div class="highlight e">
+        <strong>Estándar de referencia:</strong> el IEEE 830 define el estándar para la elaboración de especificaciones de requisitos de software, estableciendo una estructura y criterios de calidad para este documento.
+      </div>
+      <ul class="feat-list e" style="margin-top: 16px;">
+        <li>Descripción del propósito, alcance y definiciones del sistema</li>
+        <li>Requisitos funcionales numerados y descritos con precisión</li>
+        <li>Requisitos no funcionales (rendimiento, seguridad, compatibilidad)</li>
+        <li>Restricciones de diseño e interfaces externas</li>
+        <li>Criterios de verificación para cada requisito</li>
+      </ul>
+    </section>
+
+    <section class="section" id="validacion">
+      <p class="section-eyebrow accent-rose">Etapa 5 — IR</p>
+      <h2 class="section-title">Validación de Requisitos</h2>
+      <div class="section-body">
+        <p>La <strong>validación</strong> es el proceso de verificar que los requisitos documentados representan correctamente las necesidades reales de los stakeholders y que el sistema descrito, si se construye, resolverá el problema de negocio identificado. Se distingue de la verificación en que no solo comprueba si los requisitos están bien escritos, sino si son los requisitos <em>correctos</em>.</p>
+      </div>
+      <div class="cards">
+        <div class="card c-rose"><span class="card-icon">📝</span><div class="card-title">Revisión Formal</div><div class="card-body">Inspección del documento SRS por parte de stakeholders y el equipo técnico.</div></div>
+        <div class="card c-rose"><span class="card-icon">🖼</span><div class="card-title">Validación con Prototipos</div><div class="card-body">El cliente valida sus necesidades sobre maquetas o prototipos del sistema.</div></div>
+        <div class="card c-rose"><span class="card-icon">✔️</span><div class="card-title">Pruebas de Aceptación</div><div class="card-body">Definición anticipada de las pruebas que demostrarán que el requisito se cumple.</div></div>
+        <div class="card c-rose"><span class="card-icon">🔄</span><div class="card-title">Trazabilidad</div><div class="card-body">Verificación de que cada requisito puede rastrearse hasta su origen y hasta el código.</div></div>
+      </div>
+      <div class="highlight" style="margin-top: 24px; border-left-color: var(--rose);">
+        <strong>Criterios de validación:</strong> ¿El requisito es válido y necesario? ¿Es consistente con otros? ¿Es completo? ¿Es realista de implementar? ¿Es verificable y testeable?
+      </div>
+    </section>
+
+  </div><!-- end #content -->
+<!-- Back to top -->
+<a href="#hero" id="back-top" aria-label="Volver arriba">↑</a>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-inner">
+
+    <!-- Top row: brand + nav columns -->
+    <div class="footer-top">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">⚙ Ingeniería de Software</div>
+        <p class="footer-tagline">Ciclo de Vida, Paradigmas, Modelos<br>e Ingeniería de Requisitos</p>
+        <div class="footer-badge-row">
+          <span class="footer-badge cyan">HTML</span>
+          <span class="footer-badge violet">CSS</span>
+          <span class="footer-badge amber">JavaScript</span>
+        </div>
+      </div>
+
+      <!-- Nav col 1 -->
+      <div class="footer-col">
+        <p class="footer-col-title">Fases del Ciclo</p>
+        <a class="footer-link" href="#planificacion">Planificación</a>
+        <a class="footer-link" href="#analisis-fase">Análisis</a>
+        <a class="footer-link" href="#diseno">Diseño</a>
+        <a class="footer-link" href="#pruebas">Pruebas</a>
+        <a class="footer-link" href="#mantenimiento">Mantenimiento</a>
+      </div>
+
+      <!-- Nav col 2 -->
+      <div class="footer-col">
+        <p class="footer-col-title">Modelos</p>
+        <a class="footer-link" href="#cascada">Cascada</a>
+        <a class="footer-link" href="#espiral">Espiral</a>
+        <a class="footer-link" href="#iterativo">Iterativo</a>
+        <a class="footer-link" href="#scrum">Scrum</a>
+        <a class="footer-link" href="#kanban">Kanban</a>
+        <a class="footer-link" href="#xp">XP</a>
+      </div>
+
+      <!-- Nav col 3 -->
+      <div class="footer-col">
+        <p class="footer-col-title">Requisitos</p>
+        <a class="footer-link" href="#def-requisitos">Definición</a>
+        <a class="footer-link" href="#requisitos">Tipos</a>
+        <a class="footer-link" href="#ing-requisitos">Ingeniería</a>
+        <a class="footer-link" href="#elicitacion">Elicitación</a>
+        <a class="footer-link" href="#especificacion">Especificación</a>
+        <a class="footer-link" href="#validacion">Validación</a>
+      </div>
+
+      <!-- Concepts summary -->
+      <div class="footer-col footer-col-wide">
+        <p class="footer-col-title">Conceptos cubiertos</p>
+        <div class="footer-tags">
+          <span class="footer-tag">SDLC</span>
+          <span class="footer-tag">Fases</span>
+          <span class="footer-tag">Cascada</span>
+          <span class="footer-tag">Espiral</span>
+          <span class="footer-tag">Scrum</span>
+          <span class="footer-tag">Kanban</span>
+          <span class="footer-tag">XP</span>
+          <span class="footer-tag">POO</span>
+          <span class="footer-tag">Ágil</span>
+          <span class="footer-tag">Elicitación</span>
+          <span class="footer-tag">SRS / ERS</span>
+          <span class="footer-tag">Validación</span>
+          <span class="footer-tag">Prototipos</span>
+          <span class="footer-tag">TDD</span>
+          <span class="footer-tag">Manifiesto Ágil</span>
+        </div>
+      </div>
+
+    </div><!-- /footer-top -->
+
+    <!-- Divider -->
+    <div class="footer-divider"></div>
+
+    <!-- Bottom row -->
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        Elaborado con fines académicos · Ingeniería de Sistemas
+        <span class="footer-dot">·</span>
+        <span class="footer-year" id="footer-year"></span>
+      </p>
+      <div class="footer-bottom-right">
+        <span class="footer-pill cyan">25 conceptos</span>
+        <span class="footer-pill violet">6 modelos</span>
+        <span class="footer-pill emerald">5 etapas IR</span>
+        <a href="#hero" class="footer-top-link">Volver al inicio ↑</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+</footer>
+</main>
+
+
+<script src="script.js"></script>
+</body>
+</html>
